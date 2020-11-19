@@ -30,8 +30,16 @@ class Order extends ActiveRecord
       ->viaTable('order_items', ['order_id' => 'id']);
   }
 
-  public function getItems(): ActiveQuery
+  public function getOrderItems(): ActiveQuery
   {
     return $this->hasMany(OrderItem::class, ['order_id' => 'id']);
+  }
+
+  public function extraFields()
+  {
+    return [
+      'products',
+      'orderItems'
+    ];
   }
 }

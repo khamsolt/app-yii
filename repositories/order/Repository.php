@@ -12,4 +12,12 @@ class Repository extends \app\repositories\Repository implements Contract
   {
     return Order::findOne(['id' => $id]);
   }
+
+  public function all(int $userId): array
+  {
+    return Order::find()
+      ->where(['orders.customer_id' => $userId])
+      ->with('products')
+      ->all();
+  }
 }
