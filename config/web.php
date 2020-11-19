@@ -13,7 +13,8 @@ $config = [
   ],
   'container' => [
     'definitions' => [
-      \app\repositories\product\Contract::class => \app\repositories\product\Repository::class
+      \app\repositories\product\Contract::class => \app\repositories\product\Repository::class,
+      \app\repositories\order\Contract::class => \app\repositories\order\Repository::class
     ]
   ],
   'components' => [
@@ -68,13 +69,8 @@ $config = [
     'db' => $db,
     'urlManager' => [
       'enablePrettyUrl' => true,
-      'enableStrictParsing' => true,
       'showScriptName' => false,
-      'rules' => [
-        'GET api/product' => 'api/v1/product/list',
-        'POST api/order' => 'api/v1/order/create',
-        'POST api/order/pay' => 'api/v1/order/pay',
-      ],
+      'rules' => [],
     ],
   ],
   'params' => $params,
